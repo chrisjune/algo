@@ -1,0 +1,49 @@
+<html>
+<style>
+#div1{
+    border:1px solid skyblue;
+    margin:50px;
+    background : rgb(197,216,242);
+    width:400px;
+}
+#div2{
+    border: 1px solid gray;
+    background : orange;
+    margin:50px;   
+}
+#div3{
+    border: 1px solid gray;
+    margin:50px;
+    padding:10px;
+}
+#contents{
+    text-align:center;
+}
+</style>
+
+<script>
+function popup(clicked_id){
+    var parent=window.document.getElementById(clicked_id)
+    var son=parent.childNodes[1].textContent
+    alert(son);
+    cancelPropagation(event);
+}
+function cancelPropagation(event){
+    if(event.stopPropagation){
+        event.stopPropagation();
+    }else{
+        event.cancelBubble = true;
+    }
+}
+</script>
+<!-- Enter your HTML code here -->
+<div id="div1" onclick="popup(this.id)">
+    <p id="contents">Div 1</p>
+    <div id="div2" onclick="popup(this.id)">
+        <p id="contents">Div 2</p>
+        <div id="div3" onclick="popup(this.id)">
+            <p id="contents">Div 3</p>
+        </div>
+    </div>
+</div>
+</html>
